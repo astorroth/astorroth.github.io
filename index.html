@@ -15,6 +15,104 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body></body>
+<body>
+    <header>
+        <h1>Astor Roth</h1>
+        <p class="contact">
+            Contact:
+            <a href="mailto:astor.roth@systemli.org">
+                astor.roth@systemli.org
+            </a>
+        </p>
+    </header>
+
+    <main>
+
+        <section id="performance">
+            <h2>Performance</h2>
+        </section>
+
+        <section id="installation">
+            <h2>Installation</h2>
+        </section>
+
+        <section id="theatre">
+            <h2>Theatre</h2>
+            <!-- Red Herrings -->
+            <details>
+                <summary>
+                    <span class="year">2022</span>
+                    <span class="title">Red Herrings, Angels and Clones</span>
+                </summary>
+                <div class="content">
+                    <div class="description">
+                        <p class="description-eng">
+                            In „Red Herrings, Angels and Clones" a creature with multiple bodies living in a utopian place called „the Zone", is following their friend to the „outside world". To become visible to this „outside world" and cross over they must undergo an operation that makes one body out of their multiple bodies. Using motifs from the <i>Little Mermaid</i>, <i>Stalker</i>, the piece is questioning how we became to desire (queer) identity, how the nonconforming body can be a place of resistance, and how we still fall for the trap of neoliberal identity politics, capitalizing our own precious identity.
+                        </p>
+                        <p class="description-de">
+                            TODO: German Translation
+                        </p>
+                    </div>
+                    <img class="cover" src="/images/redherrings/cover.jpg" />
+                </div>
+            </details>
+            <!-- Grillade -->
+            <details>
+                <summary>
+                    <span class="year">2019</span>
+                    <span class="title">Grillade Grande 666</span>
+                </summary>
+                <div class="content">
+                    <div class="description">
+                        <p class="description-eng">
+                            „Grillade Grande 666" is set on a devilish barbecue party from which nobody is able to leave. Attending this party is a group of mermaids, goth kids, terrorists, and a band that seems to be right hand to the unspoken queen of the event, Grace. While Grace is in control of everything, and connected even to the devil himself, everyone else seems to stick to their peer group and is not able or willing to address or understand the others. That is until mermaid Shelly and terrorist Spiky fall in love. Believing that within their love lies salvation, Shelly and Spiky think that they found a way to leave the grill party. During the time of their escape, Grace is already installing a cult around their love, and when they inevitably arrive back at the Party their love is already common good.
+                        </p>
+                        <p class="description-de">
+                            TODO: German Translation
+                        </p>
+                    </div>
+                    <img class="cover" src="/images/grillade/cover.jpg" />
+                </div>
+            </details>
+        </section>
+
+        <section id="film">
+            <h2>Film/Video</h2>
+        </section>
+
+        <section id="music">
+            <h2>Music</h2>
+        </section>
+
+        <section id="writing">
+            <h2>Writing</h2>
+        </section>
+
+        <section id="collective">
+            <h2>Collective</h2>
+        </section>
+
+    </main>
+
+    <footer>
+        <p class="expand-all">
+            <a href="#" onclick="toggleAll(event)">Expand all</a>
+        </p>
+        <script>
+            function toggleAll(event) {
+                event.preventDefault();
+                const details = document.querySelectorAll('details');
+                const isAnyOpen = Array.from(details).some(detail => detail.open);
+
+                details.forEach(detail => {
+                    detail.open = !isAnyOpen;
+                });
+
+                event.target.textContent = isAnyOpen ? 'Expand all' : 'Collapse all';
+            }
+        </script>
+        <p>&copy; 2025 Astor Roth. Website by Davide Lanza. All rights reserved.</p>
+    </footer>
+</body>
 
 </html>
