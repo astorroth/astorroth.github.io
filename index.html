@@ -18,18 +18,57 @@
 <body>
     <header>
         <h1>Astor Roth</h1>
+        <p class="small-cv">
+            BFA @ Hochschule für bildende Künste Hamburg
+        </p>
         <p class="contact">
             Contact:
             <a href="mailto:astor.roth@systemli.org">
                 astor.roth@systemli.org
             </a>
         </p>
+        <p class="expand-all">
+            <a href="#" onclick="toggleDetails(event)">
+                <span></span>
+            </a>
+            <script>
+                function toggleDetails(e) {
+                    if (e) e.preventDefault();
+                    const details = document.querySelectorAll('details');
+                    const allOpen = [...details].every(d => d.open);
+                    details.forEach(d => d.open = !allOpen);
+                    const span = document.querySelector('.expand-all a span');
+                    span.innerHTML = allOpen ? 'Expand all ⇲' : 'Collapse all ⇱';
+                }
+                // Initialize the text and icon
+                toggleDetails();
+            </script>
+        </p>
+
     </header>
 
     <main>
 
         <section id="performance">
             <h2>Performance</h2>
+            <!-- aLIWONDYY - Character Development -->
+            <details>
+                <summary>
+                    <span class="year">2022</span>
+                    <span class="title">aLIWONDYY - character development</span>
+                </summary>
+                <div class="content">
+                    <div class="description">
+                        <p class="description-eng">
+                            TODO: English description
+                        </p>
+                        <p class="description-de">
+                            TODO: German description
+                        </p>
+                    </div>
+                    <img class="cover" src="/images/aliwondyy_character/cover.jpg" />
+                </div>
+            </details>
         </section>
 
         <section id="installation">
@@ -95,22 +134,6 @@
     </main>
 
     <footer>
-        <p class="expand-all">
-            <a href="#" onclick="toggleAll(event)">Expand all</a>
-        </p>
-        <script>
-            function toggleAll(event) {
-                event.preventDefault();
-                const details = document.querySelectorAll('details');
-                const isAnyOpen = Array.from(details).some(detail => detail.open);
-
-                details.forEach(detail => {
-                    detail.open = !isAnyOpen;
-                });
-
-                event.target.textContent = isAnyOpen ? 'Expand all' : 'Collapse all';
-            }
-        </script>
         <p>&copy; 2025 Astor Roth. Website by Davide Lanza. All rights reserved.</p>
     </footer>
 </body>

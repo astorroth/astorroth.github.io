@@ -14,6 +14,7 @@
   font-weight: 200;
   font-style: normal;
   /* Variables */
+  --smaller-text: .8rem;
   --small-text: .9rem;
   --bg-color: #BED;
   --fg-color: #111;
@@ -36,21 +37,26 @@ h6 {
   padding-bottom: .5rem;
 }
 
+h1 {
+  padding-bottom: 0;
+}
+
 h2 {
   padding-top: 2rem;
 }
 
-.contact {
+.expand-all {
+  padding-top: .5rem;
   font-size: var(--small-text);
+}
+
+.expand-all a {
+  text-decoration: unset;
 }
 
 footer {
   padding-top: 3rem;
   font-size: var(--small-text);
-}
-
-.expand-all {
-  padding-bottom: 1rem;
 }
 
 a {
@@ -67,8 +73,23 @@ a {
   margin-right: -.3rem;
 }
 
+.type {
+  font-size: var(--small-text);
+}
+
+.type:before {
+  font-size: var(--smaller-text);
+  content: '(';
+}
+
+.type:after {
+  font-size: var(--smaller-text);
+  content: ')';
+}
+
 .content {
   display: flex;
+  justify-content: space-between;
   padding-bottom: 1rem;
 }
 
@@ -92,9 +113,14 @@ a {
   font-style: normal;
 }
 
+ol {
+  padding-left: 2.2em;
+}
+
 .cover {
   width: 400px;
   height: intrinsic;
+  max-height: 400px;
   padding-left: 2rem;
 }
 
@@ -108,6 +134,7 @@ a {
   /* Magic to make the cover work good also on smaller screens */
   .cover {
     width: min(400px, 100%);
+    max-height: unset;
     padding-left: 0;
     padding-top: .5rem;
     padding-bottom: 1rem;
@@ -134,5 +161,17 @@ a {
 
   .expand-all {
     display: none;
+  }
+
+  /* Headings start a new page */
+  h2 {
+    break-before: always;
+    page-break-before: always;
+  }
+
+  /* Keep summary and content together */
+  details {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
