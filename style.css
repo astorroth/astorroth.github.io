@@ -118,9 +118,8 @@ ol {
 }
 
 .cover {
-  width: 400px;
+  max-width: 400px;
   height: intrinsic;
-  max-height: 400px;
   padding-left: 2rem;
 }
 
@@ -134,7 +133,6 @@ ol {
   /* Magic to make the cover work good also on smaller screens */
   .cover {
     width: min(400px, 100%);
-    max-height: unset;
     padding-left: 0;
     padding-top: .5rem;
     padding-bottom: 1rem;
