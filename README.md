@@ -13,7 +13,6 @@ docker run -it --rm \
     -v $(pwd):$(pwd) \
     -w $(pwd) \
     -p 3000:3000 \
-    -p 6006:6006 \
     node:22 bash
 ```
 
