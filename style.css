@@ -64,6 +64,27 @@ a {
   opacity: .7;
 }
 
+.toc {
+  padding-top: 2rem;
+  /* Show table of contents only in print version! */
+  display: none;
+}
+
+.toc-item-section {
+  list-style: none;
+  margin: 1em 0;
+}
+
+.toc-item-detail {
+  padding-left: 1em;
+  list-style: none;
+}
+
+.toc a {
+  text-decoration: none;
+  opacity: unset;
+}
+
 
 /* Artwork items styling */
 
@@ -151,6 +172,10 @@ ol {
     font-size: 12px;
     --bg-color: none;
     --fg-color: black;
+  }
+
+  .toc{
+    display: block
   }
 
   .cover {

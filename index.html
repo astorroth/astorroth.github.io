@@ -27,6 +27,7 @@
                 astor.roth@systemli.org
             </a>
         </p>
+        <!-- Toggle to expand/collapse all items at once -->
         <p class="expand-all">
             <a href="#" onclick="toggleDetails(event)">
                 <span></span>
@@ -44,15 +45,74 @@
                 toggleDetails();
             </script>
         </p>
+        <!-- Automatic table of contents (only visible for the print version!) -->
+        <nav class="toc">
+            <span style="font-weight: bold;">Contents</span>
+            <div id="toc-content"></div>
+            <script>
+                function generateTOC() {
+                    const tocContent = document.getElementById('toc-content');
+                    const sections = document.querySelectorAll('main > section');
 
+                    const toc = document.createElement('ul');
+                    toc.className = 'toc-list';
+
+                    sections.forEach(section => {
+                        // Create section list item
+                        const sectionLi = document.createElement('li');
+                        sectionLi.className = 'toc-item-section';
+                        const sectionTitle = section.querySelector('h2').textContent;
+                        const sectionLink = document.createElement('a');
+                        sectionLink.href = `#${section.id}`;
+                        sectionLink.textContent = sectionTitle;
+                        sectionLi.appendChild(sectionLink);
+
+                        // Get all details in this section
+                        const details = section.querySelectorAll('details');
+                        if (details.length > 0) {
+                            const subList = document.createElement('ul');
+                            details.forEach(detail => {
+                                const detailLi = document.createElement('li');
+                                detailLi.className = 'toc-item-detail';
+                                const titleSpan = detail.querySelector('.title');
+                                const yearSpan = detail.querySelector('.year');
+                                const typeSpan = detail.querySelector('.type');
+
+                                let detailTitle = titleSpan ? titleSpan.textContent.trim() : '';
+                                if (yearSpan) {
+                                    detailTitle = `${yearSpan.textContent.trim()} - ${detailTitle}`;
+                                }
+                                if (typeSpan) {
+                                    detailTitle += ` (${typeSpan.textContent.trim()})`;
+                                }
+
+                                const detailLink = document.createElement('a');
+                                detailLink.href = detail.id ? `#${detail.id}` : '#';
+                                detailLink.textContent = detailTitle;
+                                detailLi.appendChild(detailLink);
+                                subList.appendChild(detailLi);
+                            });
+                            sectionLi.appendChild(subList);
+                        }
+
+                        toc.appendChild(sectionLi);
+                    });
+
+                    tocContent.appendChild(toc);
+                }
+
+                // Generate TOC when the page loads
+                document.addEventListener('DOMContentLoaded', generateTOC);
+            </script>
+        </nav>
     </header>
 
     <main>
 
         <section id="performance">
             <h2>Performance</h2>
-            <!-- graduation work-->
-            <details>
+            <!-- White noise, Hinterraum Reue und Tage Off Protocol …-->
+            <details id="whitenoise">
                 <summary>
                     <span class="year">2025</span>
                     <span class="title">White noise, Hinterraum Reue und Tage Off Protocol …</span>
@@ -82,7 +142,7 @@
                 </div>
             </details>
             <!-- aLIWONDYY - Character Development -->
-            <details>
+            <details id="aliwondyy">
                 <summary>
                     <span class="year">2022</span>
                     <span class="title">aLIWONDYY</span>
@@ -101,7 +161,7 @@
                 </div>
             </details>
             <!-- aLIWONDYY Is Arriving -->
-            <details>
+            <details id="aliwondyy_performance">
                 <summary>
                     <span class="year">2022</span>
                     <span class="title">aLIWONDYY Is Arriving</span>
@@ -109,10 +169,10 @@
                 <div class="content">
                     <div class="description">
                         <p class="description-eng">
-                            I showcased my documentary and music as part of my school's annual show, the HFBK Jahresausstellung. 
-                            The aim of the performance was to show the documentary in a time based media installation format that would give the viewer the possibility to opt in and out. 
-                            The songs from my albums, that were part of the soundtrack of the documentary, were live performed by myself in sync with the video. 
-                            For the duration of the performance aLIWONDYY was standing in a large display case made of glass, the object covered in silver foil. 
+                            I showcased my documentary and music as part of my school's annual show, the HFBK Jahresausstellung.
+                            The aim of the performance was to show the documentary in a time based media installation format that would give the viewer the possibility to opt in and out.
+                            The songs from my albums, that were part of the soundtrack of the documentary, were live performed by myself in sync with the video.
+                            For the duration of the performance aLIWONDYY was standing in a large display case made of glass, the object covered in silver foil.
                             The documentary was projected onto the floor in front of the silver box and the inside of it (video and sound) was live streamed into the exhibition space.
                         </p>
                         <p class="description-de">
@@ -127,11 +187,10 @@
         <section id="installation">
             <h2>Installation</h2>
             <!-- Die Geschichte erzählt sich neu bis sie eine Andere ist -->
-            <details>
+            <details id="geschichteerzaehlt">
                 <summary>
                     <span class="year">2025</span>
                     <span class="title">Die Geschichte erzählt sich neu bis sie eine andere ist</span>
-
                 </summary>
                 <div class="content">
                     <div class="description">
@@ -146,7 +205,7 @@
                 </div>
             </details>
             <!-- a German politics Fail Compilaition & Bettelbrief -->
-            <details>
+            <details id="politicsfail">
                 <summary>
                     <span class="year">2025</span>
                     <span class="title">A German Politics Fail Compilation & Bettelbrief</span>
@@ -177,7 +236,7 @@
         <section id="theatre">
             <h2>Theatre</h2>
             <!-- Red Herrings -->
-            <details>
+            <details id="redherrings">
                 <summary>
                     <span class="year">2022</span>
                     <span class="title">Red Herrings, Angels and Clones</span>
@@ -198,7 +257,7 @@
                 </div>
             </details>
             <!-- Grillade -->
-            <details>
+            <details id="grillade">
                 <summary>
                     <span class="year">2019</span>
                     <span class="title">Grillade Grande 666</span>
@@ -220,7 +279,7 @@
         <section id="film">
             <h2>Film/Video</h2>
             <!-- cowboi crankyy -->
-            <details>
+            <details id="cowboi">
                 <summary>
                     <span class="year">WIP&nbsp;</span>
                     <span class="title">Cowboi Cranky</span>
@@ -239,7 +298,7 @@
                 </div>
             </details>
             <!-- aLIWONDYY Is Arriving -->
-            <details>
+            <details id="aliwondyy_docu">
                 <summary>
                     <span class="year">2022</span>
                     <span class="title">aLIWONDYY Is Arriving</span>
@@ -272,7 +331,7 @@
                 </div>
             </details>
             <!-- Wir sind das Kapital -->
-            <details>
+            <details id="wirsinddaskapital">
                 <summary>
                     <span class="year">2019</span>
                     <span class="title">Wir sind das Kapital</span>
@@ -290,7 +349,7 @@
                 </div>
             </details>
             <!-- s.t.a.m. -->
-            <details>
+            <details id="stam_episode">
                 <summary>
                     <span class="year">2019</span>
                     <span class="title">s.t.a.m.</span>
@@ -313,7 +372,7 @@
         <section id="music">
             <h2>Music</h2>
             <!-- The Unknown-->
-            <details>
+            <details id="unknownland">
                 <summary>
                     <span class="year">WIP&nbsp;</span>
                     <span class="title">The Unknown Land</span>
@@ -341,7 +400,7 @@
                 </div>
             </details>
             <!-- Future Alien Ancestors -->
-            <details>
+            <details id="futurealien">
                 <summary>
                     <span class="year">2022</span>
                     <span class="title">Future Alien Ancestors</span>
@@ -373,7 +432,7 @@
         <section id="writing">
             <h2>Writing</h2>
             <!-- -->
-            <details>
+            <details id="untotetrauer">
                 <summary>
                     <span class="year">2025</span>
                     <span class="title">unTote Trauer und die Trauer der unToten</span>
@@ -395,7 +454,7 @@
         <section id="collective">
             <h2>Collective</h2>
             <!-- Living Room Collective -->
-            <details>
+            <details id="livingroom">
                 <summary>
                     <span class="year">2022</span>
                     <span class="title">Living Room Collective</span>
@@ -403,7 +462,7 @@
                 <div class="content">
                     <div class="description">
                         <p class="description-eng">
-                            Scince 2022 I am part of the Living Room Collective. The Collective emerged from a Seminar with Reza Afisina and Iswanto Hartono carrying on their praxis of hoasting and beeing togheter. Scince then Living Room Collective organised Workshops, Karaoke Partys, collective Dinners, Workshops, Festivals and Exhibitions.
+                            Since 2022 I am part of the Living Room Collective. The Collective emerged from a Seminar with Reza Afisina and Iswanto Hartono carrying on their praxis of hoasting and beeing togheter. Scince then Living Room Collective organised Workshops, Karaoke Partys, collective Dinners, Workshops, Festivals and Exhibitions.
                         </p>
                         <p class="description-de">
                             The German description is a work in progress :)
