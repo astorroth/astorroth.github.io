@@ -45,13 +45,29 @@ h2 {
   padding-top: 2rem;
 }
 
-.expand-all {
+.expand-all a, .backhome a, .dedicated-page a {
+  text-decoration: unset;
+}
+
+.expand-all, .backhome {
   padding-top: .5rem;
   font-size: var(--small-text);
 }
 
-.expand-all a {
-  text-decoration: unset;
+.backhome:after {
+  content: ' ↩';
+  opacity: .7;
+}
+
+.dedicated-page {
+  font-size: var(--small-text);
+  padding-bottom: .5rem;
+  padding-left: .2rem;
+}
+
+.dedicated-page:before {
+  content: '↪ ';
+  opacity: .7;
 }
 
 footer {
@@ -196,5 +212,10 @@ ol {
   details {
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+
+  .links {
+    /* Do not print links */
+    display: none;
   }
 }
