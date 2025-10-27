@@ -45,11 +45,21 @@ h2 {
   padding-top: 2rem;
 }
 
-.expand-all a, .backhome a, .dedicated-page a {
+.links:before {
+  content: '☐ ';
+  opacity: .7;
+}
+
+.expand-all a,
+.toggle-language a,
+.backhome a,
+.dedicated-page a {
   text-decoration: unset;
 }
 
-.expand-all, .backhome {
+.expand-all,
+.toggle-language,
+.backhome {
   padding-top: .5rem;
   font-size: var(--small-text);
 }
@@ -142,12 +152,11 @@ a {
   padding-bottom: .5rem;
 }
 
-.description-de {
-  font-style: italic;
-}
-
-.description-de i {
-  font-style: normal;
+body.lang-en .description-de,
+body.lang-de .description-eng {
+  /* Language toggle: control which language descriptions are shown.
+     Add classes 'lang-en' or 'lang-de' to <body>. Default is 'lang-en'. */
+  display: none;
 }
 
 ol {
@@ -157,9 +166,9 @@ ol {
 .cover {
   max-width: 400px;
   height: intrinsic;
+  padding-top: 1rem;
   padding-left: 2rem;
 }
-
 
 @media screen and (max-width: 1080px) {
 
@@ -190,15 +199,21 @@ ol {
     --fg-color: black;
   }
 
-  .toc{
+  .toc {
     display: block
   }
 
   .cover {
-    width: 200px;
+    width: 300px;
   }
 
-  .expand-all {
+  .expand-all,
+  .toggle-language,
+  .backhome {
+    display: none;
+  }
+
+  footer {
     display: none;
   }
 
@@ -214,8 +229,24 @@ ol {
     page-break-inside: avoid;
   }
 
-  .links {
-    /* Do not print links */
-    display: none;
+  /* Use the same spacing as Headings */
+  details {
+    padding-top: 2rem;
+  }
+
+  /* Replace anchor text with the href in printouts. */
+  .links a {
+    font-size: 0; /* hide original link text for print */
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .links a[href]::after {
+    content: attr(href);
+    font-size: var(--smaller-text);
+    white-space: pre-wrap;
+    word-break: break-all; /* allow long URLs to wrap */
+    color: inherit;
+    display: inline-block;
   }
 }

@@ -27,6 +27,43 @@
                 astor.roth@systemli.org
             </a>
         </p>
+        <!-- Toggle to show the english/german version of the website -->
+        <p class="toggle-language">
+            <a href="#" onclick="toggleLanguage(event)" aria-label="Toggle language">
+                <span></span>
+            </a>
+            <script>
+                function toggleLanguage(e) {
+                    if (e) e.preventDefault();
+                    const body = document.body;
+                    const span = document.querySelector('.toggle-language a span');
+                    if (e) {
+                        if (body.classList.contains('lang-en')) {
+                            // if called by click -> toggle:
+                            body.classList.remove('lang-en');
+                            body.classList.add('lang-de');
+                        } else {
+                            // if called for init and no class set -> default to English:
+                            body.classList.remove('lang-de');
+                            body.classList.add('lang-en');
+                        }
+                    } else {
+                        // initialization path: ensure one of the classes is present
+                        if (!body.classList.contains('lang-en') && !body.classList.contains('lang-de')) {
+                            body.classList.add('lang-en');
+                        }
+                    }
+                    // Update label to show current language
+                    const isEn = body.classList.contains('lang-en');
+                    span.textContent = isEn ? 'Language: EN ▾' : 'Sprache: DE ▾';
+                }
+
+                // Initialize on DOMContentLoaded so body/span exist
+                document.addEventListener('DOMContentLoaded', function () {
+                    toggleLanguage();
+                });
+            </script>
+        </p>
         <!-- Toggle to expand/collapse all items at once -->
         <p class="expand-all">
             <a href="#" onclick="toggleDetails(event)">
@@ -118,7 +155,7 @@
                     <span class="title">White noise, Hinterraum Reue und Tage Off Protocol …</span>
                 </summary>
                 <p class="links dedicated-page">
-                    <a class="" href="/whitenoise.html">Read the dedicated page</a>
+                    <a class="" href="http://astorroth.github.io/whitenoise.html">Read the dedicated page</a>
                 </p>
                 <div class="content">
                     <div class="description">
@@ -222,7 +259,7 @@
                             <i>Bettelbrief</i> ist ein Text in Briefform, der das Bettelverbot in den Hamburger Verkehrsbetrieben adressiert. Die zwei Arbeiten werden als Installation nebeneinander ausgestellt: <i>A German Politics Fail Compilation</i> auf einem Computerbildschirm und mit offenem Sound, <i>Bettelbrief</i> als Druck. Der Brief soll in den öffentlichen Verkehrsmitteln verlesen und Exemplare können aus der Installation mitgenommen werden.
                         </p>
                         <p class="links">
-                            <a href="./documents/bettelbrief.pdf" target="_blank">↪ Bettelbrief [pdf]</a>
+                            <a href="http://astorroth.github.io/documents/bettelbrief.pdf" target="_blank">↪ Bettelbrief [pdf]</a>
                         </p>
                     </div>
                     <img class="cover" src="/images/politicsfail/cover.jpg" />
@@ -244,8 +281,8 @@
                             In <i>Red Herrings, Angels and Clones</i> a creature with multiple bodies living in a utopian place called „the Zone", is following their friend to the „outside world". To become visible to this „outside world" and cross over they must undergo an operation that makes one body out of their multiple bodies. Using motifs from the <i>Little Mermaid</i>, <i>Stalker</i>, the piece is questioning how we became to desire (queer) identity, how the nonconforming body can be a place of resistance, and how we still fall for the trap of neoliberal identity politics, capitalizing our own precious identity.
                         </p>
                         <p class="description-de">
-                            In <i>Red Herrings, Angels and Clones</i> folgt ein Wesen mit multiplen Körpern, das an einem utopischen Ort namens „die Zone” lebt, seiner Freund:in in der „Außenwelt”. Um für diese „Außenwelt“ sichtbar zu werden und sie zu betreten zu können, muss es sich einer Operation unterziehen, die aus seinen vielen Körpern einen macht. 
-                            Das Stück verwendet Motive aus <i>Die kleine Seejungfrau</i>, <i>Stalker (Picknick am Wegesrand)</i> und <i>Brazil</i> und, inspiriert von <i>Glitch Feminism Manifesto</i>, hinterfragt, wie das popkulturelle Verlangen nach (queerer) Identität entstanden ist, wie der nonkonforme queer Körper tatsächlich ein Ort des Widerstands sein kann und wie wir dennoch in die Falle neoliberaler Identitätspolitik tappen und die eigene Identität zum Produkt machen. 
+                            In <i>Red Herrings, Angels and Clones</i> folgt ein Wesen mit multiplen Körpern, das an einem utopischen Ort namens „die Zone” lebt, seiner Freund:in in der „Außenwelt”. Um für diese „Außenwelt“ sichtbar zu werden und sie zu betreten zu können, muss es sich einer Operation unterziehen, die aus seinen vielen Körpern einen macht.
+                            Das Stück verwendet Motive aus <i>Die kleine Seejungfrau</i>, <i>Stalker (Picknick am Wegesrand)</i> und <i>Brazil</i> und, inspiriert von <i>Glitch Feminism Manifesto</i>, hinterfragt, wie das popkulturelle Verlangen nach (queerer) Identität entstanden ist, wie der nonkonforme queer Körper tatsächlich ein Ort des Widerstands sein kann und wie wir dennoch in die Falle neoliberaler Identitätspolitik tappen und die eigene Identität zum Produkt machen.
                         </p>
                         <p class="links">
                             <a href="https://www.volksbuehne.berlin/de/repertoire/p14-red-herrings-angels-and-clones" target="_blank">↪ Red Herrings, Angels and Clones | volksbuehne.berlin</a>
@@ -290,7 +327,7 @@
                             <i>Cowboi Cranky</i> (working title) is a project I’m currently developing as a western porn film crossover. The work explores the precarious position of cultural workers, as described by Rosalind Gill and Andy Pratt, while reflecting on fantasies of the „Wild West” in East Germany and Czechoslovakia during Soviet times, and how the „Wild West” later broke into the East as a new „gold rush”, with Western society entering and exploiting the region after the fall of the Iron Curtain. Drawing on queer erotic film and the queercore movement, the piece examines the (re)appropriation of images associated with social marginalization — filth, infection, and sexual perversion.
                         </p>
                         <p class="description-de">
-                            <i>Cowboi Cranky (Arbeitstitel)</i> ist ein Projekt, das ich derzeit als Western-Pornofilm-Crossover entwickle. Ausgehend von den Erotikfilmen der Queercore-Bewegung untersucht die Arbeit die (Re)Appropriation von Bildern, die mit sozialer Marginalisierung verbunden sind (wie Schmutz, Ansteckung, sexuelle Perversion) und verbindet diese mit Rosalind Gill und Andy Pratt’ Mutmaßungen über eine nächste prekäre Klasse von Kulturschaffenden. Gleichzeitig untersucht die Arbeit das Ost-West-Verhältnis durch eine Auseinandersetzung mit Fantasien des wilden Westens innerhalb des gesellschaftlichen Bewusstseins Ostdeutschlands und der Tschechoslowakei während der Sowjetzeit, sowie des anschließenden Einbruchs des wilden Westens in den Osten in Form eines neuen Goldrauschs, der Mitglieder der westdeutschen Gesellschaft dazu veranlasste, in den Osten einzudringen und Region und Menschen auszubeuten. 
+                            <i>Cowboi Cranky (Arbeitstitel)</i> ist ein Projekt, das ich derzeit als Western-Pornofilm-Crossover entwickle. Ausgehend von den Erotikfilmen der Queercore-Bewegung untersucht die Arbeit die (Re)Appropriation von Bildern, die mit sozialer Marginalisierung verbunden sind (wie Schmutz, Ansteckung, sexuelle Perversion) und verbindet diese mit Rosalind Gill und Andy Pratt’ Mutmaßungen über eine nächste prekäre Klasse von Kulturschaffenden. Gleichzeitig untersucht die Arbeit das Ost-West-Verhältnis durch eine Auseinandersetzung mit Fantasien des wilden Westens innerhalb des gesellschaftlichen Bewusstseins Ostdeutschlands und der Tschechoslowakei während der Sowjetzeit, sowie des anschließenden Einbruchs des wilden Westens in den Osten in Form eines neuen Goldrauschs, der Mitglieder der westdeutschen Gesellschaft dazu veranlasste, in den Osten einzudringen und Region und Menschen auszubeuten.
                         </p>
                     </div>
                     <img class="cover" src="/images/cowboi/cover.jpg" />
@@ -309,8 +346,8 @@
                             During the filming, I developed the alter ego <a href="#aliwondyy">aLIWONDYY</a> — an extraterrestrial persona shaped by the experience of living in complete isolation in space, searching for connection and trying to understand what it means to exist as oneself in relation to others. By performing this extreme strangeness, social space and conventions become more tangible, while simultaneously producing a form of self-alienation. This distance allows me to perceive and reflect on my own position within these structures, ultimately turning the gaze back upon myself as the person behind the camera.
                         </p>
                         <p class="description-de">
-                            <i>aLIWONDYY is arriving</i>  is arriving ist eine fiktionalisierte Videodokumentation, die während der ersten Monate der Covid-Pandemie in Washington State, USA, gefilmt wurde. Die Arbeit versucht, den Voyeurismus (und die Gewalt) zu adressieren, der dem Blick durch die Kamera inhärent ist und welcher durch das Eindringen in einen unbekannten Kontext - motiviert von einer Faszination für das Unbekannte - noch offensichtlicher wird. Diese Reflexion des eigenen Blicks findet anhand einer performativen Übersteigerung meiner Position als Fremder statt. 
-                            So entwickelte ich während des Drehprozesses den Alter Ego <a href="#aliwondyy">aLIWONDYY</a> - einer außerirdischen Persona, die geprägt von der Erfahrung eines Lebens in vollkommener Isolation im Weltraum, nach Verbindungen sucht, um herauszufinden, was es bedeutet, in Relation zu anderen selbst jemand zu sein. Anhand meiner behaupteten/ performten radikalen Fremdheit werden gesellschaftlicher Raum und Konventionen einerseits greifbarer und andererseits findet durch sie eine Selbstentfremdung statt, die die notwendige Distanz schafft, um meine eigene Position innerhalb derselben wahrzunehmen, zu reflektieren und so den Blick auf mich selbst als filmende Person zurückzuwerfen. 
+                            <i>aLIWONDYY is arriving</i>  is arriving ist eine fiktionalisierte Videodokumentation, die während der ersten Monate der Covid-Pandemie in Washington State, USA, gefilmt wurde. Die Arbeit versucht, den Voyeurismus (und die Gewalt) zu adressieren, der dem Blick durch die Kamera inhärent ist und welcher durch das Eindringen in einen unbekannten Kontext - motiviert von einer Faszination für das Unbekannte - noch offensichtlicher wird. Diese Reflexion des eigenen Blicks findet anhand einer performativen Übersteigerung meiner Position als Fremder statt.
+                            So entwickelte ich während des Drehprozesses den Alter Ego <a href="#aliwondyy">aLIWONDYY</a> - einer außerirdischen Persona, die geprägt von der Erfahrung eines Lebens in vollkommener Isolation im Weltraum, nach Verbindungen sucht, um herauszufinden, was es bedeutet, in Relation zu anderen selbst jemand zu sein. Anhand meiner behaupteten/ performten radikalen Fremdheit werden gesellschaftlicher Raum und Konventionen einerseits greifbarer und andererseits findet durch sie eine Selbstentfremdung statt, die die notwendige Distanz schafft, um meine eigene Position innerhalb derselben wahrzunehmen, zu reflektieren und so den Blick auf mich selbst als filmende Person zurückzuwerfen.
 
                         </p>
                     </div>
@@ -446,7 +483,7 @@
                             Seit 2022 bin ich Teil des <i>Living Room Collective</i>. Das Collective entstand aus einem Seminar mit Reza Afisina und Iswanto Hartono und führt deren Praxis des Gastgebens und Zusammenseins fort. Seitdem hat das Living Room Collective Workshops, Karaoke-Partys, gemeinsame Abendessen, Festivals und Ausstellungen organisiert.
                         </p>
                         <p class="links">
-                            <a href="./documents/livingroom.pdf" target="_blank">↪ Living Room Portfolio [pdf]</a>
+                            <a href="http://astorroth.github.io/documents/livingroom.pdf" target="_blank">↪ Living Room Portfolio [pdf]</a>
                         </p>
                     </div>
                     <img class="cover" src="/images/livingroom/cover.jpg" />
