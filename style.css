@@ -223,7 +223,7 @@ ol {
   }
 
   /* Headings start a new page */
-  h2 {
+  .items-section {
     break-before: always;
     page-break-before: always;
   }
