@@ -224,13 +224,13 @@ ol {
   }
 
   /* Keep summary and content together */
-  details {
+  .artwork {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
   /* Use the same spacing as Headings */
-  details {
+  .artwork {
     padding-top: 2rem;
   }
 
